@@ -1,4 +1,5 @@
 
+from utils.query import Query
 from utils.namer import FileNamer
 from collector.collectorConfig import CollectorConfig
 from twscrapper.scrapper import scrap
@@ -23,32 +24,30 @@ class TweetCollector:
 
         return output_path
 
-    def __generateFileName(self):
+    def __generateFileName(self, query: Query):
         name = 'tweets_collected_at_'
-        name += self.config.date_start
+        name += query.date_start
 
-        if(self.config.date_end):
-            name += "_until_" + self.config.date_end
+        if(query.date_end):
+            name += "_until_" + query.date_end
         return name
 
-    def collect(self, query: list):
+    def collect(self, query: Query):
         namer = FileNamer(self.config)
         print("Start collecting....")
-        print("query = " + query.__str__() +
-              " since: " + self.config.date_start +
-              " until: " + self.config.date_end)
+        print("query = " + query.search.__str__() +
+              " since: " + query.date_start +
+              " until: " + query.date_end)
 
-        tweets = scrap(words=query,
-                       since=self.config.date_start,
-                       until=self.config.date_end,
-                       lang=self.config.language,
-                       interval=1,
-                       display_type="Top", save_images=False,
-                       resume=False, filter_replies=False, proximity=False)
+        tweets = scrap(words=query.search,
+                       since=query.date_start,
+                       until=query.date_end,
+                       lang=query.language,
+                       interval=query.interval_day)
 
         output = namer.generateOutputFilePath(
             self.config.output_folder_collected,
-            self.__generateFileName(), ".csv")
+            self.__generateFileName(query), ".csv")
         print("saving collecting results...")
         tweets.to_csv(output)
         print("saved in: " + output)

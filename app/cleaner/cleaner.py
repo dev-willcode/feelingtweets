@@ -11,27 +11,26 @@ class Cleaner:
     def __init__(self, config: CollectorConfig):
         self.__config = config
 
-    def process(self, path: str):
+    def cleanFile(self, path: str):
         print("Start cleaning....")
         namer = FileNamer(self.__config)
-        data = self.__clean(path)
+        clean_data = self.__clean(path)
         df = pd.DataFrame()
-        df['Text'] = data
+        df['Text'] = clean_data
         output = namer.generateOutputFilePath(
             self.__config.output_folder_cleaned,
-            self.__generateFileName(), ".csv")
+            self.__generateFileName(path), ".csv")
         print("saving cleaning results...")
         df.to_csv(output)
         print("saved in: " + output)
         print("Clean process finished.")
         return output
 
-    def __generateFileName(self):
-        name = 'tweets_cleaned_at_'
-        name += self.config.date_start
+    def __generateFileName(self, path: str):
+        filename_with_extension = path.split("\\")[-1]
+        filename_without_extension = filename_with_extension.split(".")[0]
 
-        if(self.config.date_end):
-            name += "_until_" + self.config.date_end
+        name = 'cleaned_' + filename_without_extension
         return name
 
     def __clean(self, path: str):
