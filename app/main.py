@@ -1,16 +1,15 @@
-import datetime as dt
 from collector.collectorConfig import CollectorConfig
 from collector.tweetCollector import TweetCollector
 from cleaner.cleaner import Cleaner
 
 
 def main():
-    config = CollectorConfig(date_start="2021-09-01")
+    config = CollectorConfig(date_start='2021-09-06')
     collector = TweetCollector(config)
-    cleaner = Cleaner()
+    cleaner = Cleaner(config)
 
-    data = collector.collect(["Ecuador", "tri"])
-    cleaner.clean(data)
+    collected_data = collector.collect(["Ecuador%20AND%20Tri"])
+    clean_data = cleaner.process(collected_data)
 
 
 if __name__ == "__main__":
