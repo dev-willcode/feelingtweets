@@ -1,30 +1,19 @@
 
+from pandas.core.frame import DataFrame
 from utils.query import Query
-from utils.namer import FileNamer
+from utils.writter import FileWritter
 from collector.collectorConfig import CollectorConfig
 from twscrapper.scrapper import scrap
 import os
 
 
 class TweetCollector:
+    __writer: FileWritter
 
     def __init__(self, config: CollectorConfig):
-        self.config = config
+        self.__writer = FileWritter(config)
 
-    def __generateOutputFilePath(self, file_number: int = 0):
-        main_path = os.path.dirname(os.path.realpath(__file__))
-        dir_path = os.path.join(main_path, self.config.output_folder)
-
-        filename = self.__generateFileName(file_number)
-        extension = ".csv"
-        output_path = os.path.join(dir_path, filename) + extension
-
-        if(os.path.exists(output_path)):
-            return self.__generateOutputFilePath(file_number + 1)
-
-        return output_path
-
-    def __generateFileName(self, query: Query):
+    def __generate_file_name(self, query: Query):
         name = 'tweets_collected_at_'
         name += query.date_start
 
@@ -32,24 +21,22 @@ class TweetCollector:
             name += "_until_" + query.date_end
         return name
 
-    def collect(self, query: Query):
-        namer = FileNamer(self.config)
+    def collect(self, query: Query, save_file=False):
         print("Start collecting....")
-        print("query = " + query.search.__str__() +
+        print("query = " + query.get_search_str() +
               " since: " + query.date_start +
               " until: " + query.date_end)
 
-        tweets = scrap(words=query.search,
+        tweets = scrap(words=query.get_search_str(),
                        since=query.date_start,
                        until=query.date_end,
                        lang=query.language,
-                       interval=query.interval_day)
+                       interval=query.interval_day,
+                       limit=query.limit_tweets)
+        if save_file:
+            self.__write_results(tweets, query)
+        return tweets
 
-        output = namer.generateOutputFilePath(
-            self.config.output_folder_collected,
-            self.__generateFileName(query), ".csv")
-        print("saving collecting results...")
-        tweets.to_csv(output)
-        print("saved in: " + output)
-        print("Collecting process finished.")
-        return output
+    def __write_results(self, data: DataFrame, query: Query):
+        file_name = self.__generate_file_name(query)
+        self.__writer.save_collected_file(file_name, data)
