@@ -23,11 +23,11 @@ class TweetCollector:
 
     def collect(self, query: Query, save_file=False):
         print("Start collecting....")
-        print("query = " + query.get_search_str() +
+        print("query = " + query.search +
               " since: " + query.date_start +
               " until: " + query.date_end)
 
-        tweets = scrap(words=query.get_search_str(),
+        tweets = scrap(words=query.get_search_query(),
                        since=query.date_start,
                        until=query.date_end,
                        lang=query.language,

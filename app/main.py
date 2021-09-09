@@ -11,7 +11,7 @@ def main():
     cleaner = Cleaner(config)
     analizer = Analizer(config)
 
-    query = Query(["Ecuador%20AND%20Tri"],
+    query = Query("(Ecuador OR TRI) AND (Gonzalo Plata)",
                   date_start="2021-09-06")
     collected_data = collector.collect(query)
     clean_data = cleaner.clean(collected_data)

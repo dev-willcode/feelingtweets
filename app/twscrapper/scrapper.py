@@ -20,10 +20,6 @@ def scrap(since, until, words, interval, lang,
         until = datetime.date.today().strftime("%Y-%m-%d")
     refresh = 0
 
-    if words:
-        if type(words) == str:
-            words = words.split("//")
-
     driver = init_driver(headless, proxy)
     while until_local <= datetime.datetime.strptime(until, '%Y-%m-%d'):
         scroll = 0

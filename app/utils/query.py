@@ -1,9 +1,8 @@
 from datetime import date
-from typing import List
 
 
 class Query:
-    search: List[str]
+    search: str
     date_start: str
     date_end: str
     language: str
@@ -11,7 +10,7 @@ class Query:
     limit_tweets: int
 
     def __init__(self,
-                 search: List[str],
+                 search: str,
                  date_start=date.today().__str__(),
                  date_end=date.today().__str__(),
                  language='es',
@@ -25,5 +24,5 @@ class Query:
         self.interval_day = interval_day
         self.limit_tweets = limit_tweets
 
-    def get_search_str(self):
-        return self.search.__str__()
+    def get_search_query(self):
+        return self.search.replace(" ", "%20")

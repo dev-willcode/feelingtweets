@@ -114,14 +114,6 @@ def init_driver(headless=True, proxy=None):
 
 
 def log_search_page(driver, since, until_local, lang,  words):
-    if words is not None:
-        if len(words) == 1:
-            words = "(" + str(''.join(words)) + ")%20"
-        else:
-            words = "(" + str('%20OR%20'.join(words)) + ")%20"
-    else:
-        words = ""
-
     if lang is not None:
         lang = 'lang%3A' + lang
     else:
