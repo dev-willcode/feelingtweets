@@ -1,17 +1,17 @@
-
+from scrapper.scrapper import Scrapper
 from pandas.core.frame import DataFrame
 from utils.query import Query
 from utils.writter import FileWritter
 from collector.collectorConfig import CollectorConfig
-from twscrapper.scrapper import scrap
-import os
 
 
 class TweetCollector:
     __writer: FileWritter
+    __scrapper: Scrapper
 
     def __init__(self, config: CollectorConfig):
         self.__writer = FileWritter(config)
+        self.__scrapper = Scrapper(config)
 
     def __generate_file_name(self, query: Query):
         name = 'tweets_collected_at_'
@@ -27,12 +27,7 @@ class TweetCollector:
               " since: " + query.date_start +
               " until: " + query.date_end)
 
-        tweets = scrap(words=query.get_search_query(),
-                       since=query.date_start,
-                       until=query.date_end,
-                       lang=query.language,
-                       interval=query.interval_day,
-                       limit=query.limit_tweets)
+        tweets = self.__scrapper.scrap(query)
         if save_file:
             self.__write_results(tweets, query)
         return tweets

@@ -130,7 +130,7 @@ def log_search_page(driver, since, until_local, lang,  words):
 def keep_scroling(driver, data, tweet_ids, scrolling, tweet_parsed, limit, scroll, last_position):
 
     while scrolling and tweet_parsed < limit:
-        sleep(random.uniform(0.5, 1.5))
+        sleep(random.uniform(1, 1.8))
         # get the card of tweets
         page_cards = driver.find_elements_by_xpath(
             '//div[@data-testid="tweet"]')

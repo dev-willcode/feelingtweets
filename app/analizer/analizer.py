@@ -39,7 +39,7 @@ class Analizer():
 
     def __write_results(self, data: DataFrame):
         file_name = self.__generate_file_name()
-        self.__writer.save_cleaned_file(file_name, data)
+        self.__writer.save_analized_file(file_name, data)
         return file_name
 
     def analize_file(self, path: str):

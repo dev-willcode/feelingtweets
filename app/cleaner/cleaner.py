@@ -1,8 +1,6 @@
 from pandas.core.frame import DataFrame
 from collector.collectorConfig import CollectorConfig
 from utils.writter import FileWritter
-from pandas.core import series
-import pandas as pd
 import re as regex
 
 
