@@ -33,6 +33,13 @@ class FileWritter:
         data.to_csv(path)
         print("saved in: " + path)
 
+    def save_traduced_file(self, file_name: str,  data: DataFrame):
+        path = self.__build_folder_path(
+            self.__config.output_folder_traduced, file_name)
+        print("saving results...")
+        data.to_csv(path)
+        print("saved in: " + path)
+
     def read_file(self, path: str):
         return pd.read_csv(path)
 
