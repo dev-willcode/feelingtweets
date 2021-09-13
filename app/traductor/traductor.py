@@ -2,6 +2,7 @@ from utils.writter import FileWritter
 from pandas.core.frame import DataFrame
 from collector.collectorConfig import CollectorConfig
 from googletrans import Translator
+import pandas as pd
 
 
 class Traductor:
@@ -18,7 +19,16 @@ class Traductor:
     def traduce(self, data: DataFrame, save_file=False):
         print("Start traducing....")
         traduced_data = self.__traduce_data(data)
-        if save_file:
+        if save_file and traduced_data is not None:
+            self.__write_results(traduced_data)
+        print("Traduce process finished.")
+        return traduced_data
+
+    def traduce_file(self, path: str, save_file=False):
+        print("Start traducing....")
+        data = pd.read_csv(path)
+        traduced_data = self.__traduce_data(data)
+        if save_file and traduced_data is not None:
             self.__write_results(traduced_data)
         print("Traduce process finished.")
         return traduced_data
@@ -32,11 +42,17 @@ class Traductor:
         return 'traduced_data'
 
     def __traduce_data(self, data: DataFrame):
-        traduced_data: list[list[str]] = []
-        for tweet in data[self.__config.cleaner_column]:
-            traduced_tweet = self.__translator.translate(
-                tweet, src=self.__config.input_collect_language,
-                dest=self.__config.output_traduce_language)
-            traduced_data.append([tweet, traduced_tweet.text])
-        df = DataFrame(traduced_data, columns=self.__TRADUCED_COLUMNS)
-        return df
+        try:
+            if data.empty:
+                raise ValueError("Translator: Empty data!")
+            traduced_data: list[list[str]] = []
+            for tweet in data[self.__config.cleaner_column]:
+                print(tweet)
+                traduced_tweet = self.__translator.translate(
+                    tweet, src=self.__config.input_collect_language,
+                    dest=self.__config.output_traduce_language)
+                traduced_data.append([tweet, traduced_tweet.text])
+            df = DataFrame(traduced_data, columns=self.__TRADUCED_COLUMNS)
+            return df
+        except ValueError as e:
+            print(e)

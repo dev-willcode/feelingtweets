@@ -1,7 +1,6 @@
 from pandas.core.frame import DataFrame
 from collector.collectorConfig import CollectorConfig
 from os import path
-import pandas as pd
 import os
 
 
@@ -39,9 +38,6 @@ class FileWritter:
         print("saving results...")
         data.to_csv(path)
         print("saved in: " + path)
-
-    def read_file(self, path: str):
-        return pd.read_csv(path)
 
     def __build_folder_path(self, folder: str,
                             file_name: str, file_number: int = 0):

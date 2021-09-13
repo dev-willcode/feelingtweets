@@ -28,7 +28,7 @@ class TweetCollector:
               " until: " + query.date_end)
 
         tweets = self.__scrapper.scrap(query)
-        if save_file:
+        if save_file and tweets is not None:
             self.__write_results(tweets, query)
         return tweets
 

@@ -2,7 +2,6 @@ from analizer.modules.vader_analizer import VaderAnalizer
 from analizer.modules.textblob_analizer import TextBlobAnalizer
 from typing import List
 from pandas.core.frame import DataFrame
-from collector.collectorConfig import CollectorConfig
 import pandas as pd
 
 
@@ -10,7 +9,7 @@ class Analizer():
     __textblob_module: TextBlobAnalizer
     __vader_module: VaderAnalizer
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self):
         self.__textblob_module = TextBlobAnalizer()
         self.__vader_module = VaderAnalizer()
 

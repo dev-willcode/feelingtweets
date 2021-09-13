@@ -2,6 +2,7 @@ from pandas.core.frame import DataFrame
 from collector.collectorConfig import CollectorConfig
 from utils.writter import FileWritter
 import re as regex
+import pandas as pd
 
 
 class Cleaner:
@@ -15,14 +16,14 @@ class Cleaner:
     def clean(self, data: DataFrame, save_file=False):
         print("Start cleaning....")
         clean_data = self.__clean_data(data)
-        if save_file:
+        if save_file and clean_data is not None:
             self.__write_results(clean_data)
         print("Clean process finished.")
         return clean_data
 
     def clean_file(self, path: str, save_file=False):
         print("Start cleaning....")
-        data = self.__writer.read_file(path)
+        data = pd.read_csv(path)
         clean_data = self.__clean_data(data)
         if save_file:
             self.__write_results(clean_data)
@@ -39,22 +40,31 @@ class Cleaner:
 
     def __clean_data(self, data: DataFrame):
         filtered_data = []
-        for tweet in data[self.__config.collector_column]:
-            processed = self.__convert_lowercase(tweet)
-            processed = self.__clean_mentions(processed)
-            processed = self.__clean_links(processed)
-            processed = self.__clean_specials_characters(processed)
-            processed = self.__clean_individual_characters(processed)
-            processed = self.__clean_first_individual_character(processed)
-            processed = self.__clean_b_prefix(processed)
-            processed = self.__clean_hashtag(processed)
-            processed = self.__clean_numbers(processed)
-            processed = self.__clean_whitespaces(processed)
-            filtered_data.append(processed)
-        df = DataFrame(filtered_data, columns=[self.__config.cleaner_column])
-        df = df.dropna()
-        df = df.drop_duplicates(subset=[self.__config.cleaner_column])
-        return df
+        try:
+            if data.empty:
+                raise ValueError("Translator: Empty data!")
+            for tweet in data[self.__config.collector_column]:
+                processed = self.__convert_lowercase(tweet)
+                processed = self.__clean_mentions(processed)
+                processed = self.__clean_links(processed)
+                processed = self.__clean_specials_characters(processed)
+                processed = self.__clean_individual_characters(processed)
+                processed = self.__clean_first_individual_character(processed)
+                processed = self.__clean_b_prefix(processed)
+                processed = self.__clean_hashtag(processed)
+                processed = self.__clean_numbers(processed)
+                processed = self.__clean_whitespaces(processed)
+                # check that result is not empty tweet
+                if processed:
+                    filtered_data.append(processed)
+
+            df = DataFrame(filtered_data, columns=[
+                           self.__config.cleaner_column])
+            df = df.dropna()
+            df = df.drop_duplicates(subset=[self.__config.cleaner_column])
+            return df
+        except ValueError as e:
+            print(e)
 
     def __convert_lowercase(self, text: str):
         return text.lower()
@@ -85,7 +95,8 @@ class Cleaner:
 
     def __clean_whitespaces(self, text: str):
         regex_varios_espacios = r"\s+"
-        return regex.sub(regex_varios_espacios, " ", text)
+        result = regex.sub(regex_varios_espacios, " ", text)
+        return result.lstrip()
 
     def __clean_b_prefix(self, text: str):
         regex_prefijo_b = r"^b\s+"

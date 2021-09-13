@@ -20,7 +20,7 @@ class CollectorConfig:
                  collector_column="tweet",
                  cleaner_column="clean_tweet",
                  analizer_column="analized_tweet",
-                 input_collect_language="es",
+                 input_collect_language="auto",
                  output_traduce_language="en",
                  ):
         self.output_folder = output_folder
