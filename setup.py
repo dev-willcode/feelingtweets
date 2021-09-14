@@ -8,8 +8,8 @@ setup(
     description='A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)',
     author='Willy Carreño',
     author_email='dev.willct@gmail.com',
-    url='https://github.com/dev-willcode/sentimental-analysis-project',
-    download_url='https://github.com/dev-willcode/sentimental-analysis-project/archive/refs/tags/v0.0.1.tar.gz',
+    url='https://github.com/dev-willcode/feelingtweets',
+    download_url='https://github.com/dev-willcode/feelingtweets/archive/refs/tags/v0.0.1.tar.gz',
     keywords=['Sentimental', "Analysis", 'Textblob', 'VADER', "PNL"],
     install_requires=[
         'googletrans',
