@@ -20,11 +20,11 @@ setup(
     dependency_links=[
         'git+https://github.com/twintproject/twint.git#egg=twint'
     ],
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Education',
-        'Topic :: Software Development :: Education',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.6',
-    ],
+    classifiers=['Development Status :: 3 - Alpha',
+                 'Intended Audience :: Education',
+                 'Intended Audience :: End Users/Desktop',
+                 'License :: OSI Approved :: MIT License',
+                 'Topic :: Education',
+                 'Programming Language :: Python',
+                 'Programming Language :: Python :: 3.6'],
 )
