@@ -22,7 +22,7 @@ setup(
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers, Data Scientist',
+        'Intended Audience :: Data Scientists',
         'Topic :: Software Development :: Analysis Sentiments',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.6',
