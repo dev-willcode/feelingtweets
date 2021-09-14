@@ -1,5 +1,5 @@
-from feelingtweets.analizer.modules.vader_analizer import VaderAnalizer
-from feelingtweets.analizer.modules.textblob_analizer import TextBlobAnalizer
+from .vader_analizer import VaderAnalizer
+from .textblob_analizer import TextBlobAnalizer
 from typing import List
 from pandas.core.frame import DataFrame
 import pandas as pd
