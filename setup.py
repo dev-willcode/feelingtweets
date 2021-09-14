@@ -3,13 +3,13 @@ import setuptools
 
 setup(
     name="feelingtweets",
-    version="1.0.1",
+    version="1.0.2",
     license="MIT",
     description="A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)",
     author="Willy Carreño",
     author_email="dev.willct@gmail.com",
     url="https://github.com/dev-willcode/feelingtweets",
-    download_url="https://github.com/dev-willcode/feelingtweets/archive/refs/tags/v1.0.1.tar.gz",
+    download_url="https://github.com/dev-willcode/feelingtweets/archive/refs/tags/v1.0.2.tar.gz",
     keywords=["Sentimental", "Analysis", "Textblob", "VADER", "PNL"],
     python_requires=">=3.6.0",
     packages=setuptools.find_packages(),
