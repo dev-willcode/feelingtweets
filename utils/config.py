@@ -1,5 +1,5 @@
 
-class CollectorConfig:
+class Config:
     output_folder: str
     output_folder_collected: str
     output_folder_cleaned: str
@@ -12,7 +12,7 @@ class CollectorConfig:
     output_traduce_language: str
 
     def __init__(self,
-                 output_folder="C:\\Users\\willy\\Documents\\tweetfeels",
+                 output_folder=None,
                  output_folder_collected="collected",
                  output_folder_cleaned="cleaned",
                  output_folder_analized="analized",

@@ -1,13 +1,13 @@
 from pandas.core.frame import DataFrame
 from utils.query import Query
-from utils.config import CollectorConfig
+from utils.config import Config
 from twint import run, Config, storage
 
 
 class Scrapper:
-    __config: CollectorConfig
+    __config: Config
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self, config: Config):
         self.__config = config
 
     def print(self, arg):

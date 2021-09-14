@@ -1,6 +1,6 @@
 
 from utils.query import Query
-from utils.config import CollectorConfig
+from utils.config import Config
 from collector.tweetCollector import TweetCollector
 from analizer.analizer import Analizer
 from cleaner.cleaner import Cleaner
@@ -8,7 +8,7 @@ from traductor.traductor import Traductor
 
 
 if __name__ == "__main__":
-    config = CollectorConfig(input_collect_language="es")
+    config = Config(input_collect_language="es")
     collector = TweetCollector(config)
     cleaner = Cleaner(config)
     traductor = Traductor(config)
@@ -22,5 +22,8 @@ if __name__ == "__main__":
     if translate_data is not None:
         analized_data = analizer.analize(translate_data["traduced"])
         print(analized_data)
-        analized_data = analizer.analize(translate_data["original"])
+        analized_data = analizer.analize_with_textblob(
+            translate_data["traduced"])
+        print(analized_data)
+        analized_data = analizer.analize_with_vader(translate_data["traduced"])
         print(analized_data)

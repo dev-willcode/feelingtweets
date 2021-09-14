@@ -1,14 +1,14 @@
 from pandas.core.frame import DataFrame
-from utils.config import CollectorConfig
+from utils.config import Config
 from os import path
 import os
 
 
 class FileWritter:
-    __config: CollectorConfig
+    __config: Config
     __EXTENSION = ".csv"
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self, config: Config):
         self.__config = config
 
     def save_analized_file(self, file_name: str,  data: DataFrame):
@@ -42,8 +42,7 @@ class FileWritter:
     def __build_folder_path(self, folder: str,
                             file_name: str, file_number: int = 0):
         main_path = self.__config.output_folder
-        if(not path.exists(main_path)):
-            # path por defecto, en el home directory.
+        if(main_path is None or not path.exists(main_path)):
             main_path = path.join(path.expanduser("~"), "Analysis")
 
         dir_path = path.join(main_path, folder)

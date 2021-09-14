@@ -1,15 +1,15 @@
 from pandas.core.frame import DataFrame
-from utils.config import CollectorConfig
+from utils.config import Config
 from utils.writter import FileWritter
 import re as regex
 import pandas as pd
 
 
 class Cleaner:
-    __config: CollectorConfig
+    __config: Config
     __writer: FileWritter
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self, config: Config):
         self.__config = config
         self.__writer = FileWritter(config)
 

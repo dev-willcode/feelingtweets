@@ -1,17 +1,17 @@
 from utils.writter import FileWritter
 from pandas.core.frame import DataFrame
-from utils.config import CollectorConfig
+from utils.config import Config
 from googletrans import Translator
 import pandas as pd
 
 
 class Traductor:
-    __config: CollectorConfig
+    __config: Config
     __writter: FileWritter
     __translator: Translator
     __TRADUCED_COLUMNS = ["original", "traduced"]
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self, config: Config):
         self.__config = config
         self.__writter = FileWritter(config)
         self.__translator = Translator()

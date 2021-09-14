@@ -2,14 +2,14 @@ from scrapper.scrapper import Scrapper
 from pandas.core.frame import DataFrame
 from utils.query import Query
 from utils.writter import FileWritter
-from utils.config import CollectorConfig
+from utils.config import Config
 
 
 class TweetCollector:
     __writer: FileWritter
     __scrapper: Scrapper
 
-    def __init__(self, config: CollectorConfig):
+    def __init__(self, config: Config):
         self.__writer = FileWritter(config)
         self.__scrapper = Scrapper(config)
 
