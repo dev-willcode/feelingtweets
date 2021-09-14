@@ -47,7 +47,6 @@ class Traductor:
                 raise ValueError("Translator: Empty data!")
             traduced_data: list[list[str]] = []
             for tweet in data[self.__config.cleaner_column]:
-                print(tweet)
                 traduced_tweet = self.__translator.translate(
                     tweet, src=self.__config.input_collect_language,
                     dest=self.__config.output_traduce_language)

@@ -14,11 +14,10 @@ if __name__ == "__main__":
     traductor = Traductor(config)
     analizer = Analizer()
 
-    # search = "(ECUADOR OR TRI) AND (FUTBOL OR FÚTBOL OR partido OR selección)"
-    # query = Query(search, date_start="2021-09-06", limit_tweets=3200)
-    # collected_data = collector.collect(query, True)
-    collected_data = r"C:\Users\willy\Documents\Analisys\collected\tweets_collected_at_2021-09-06_until_2021-09-13.csv"
-    cleaned_data = cleaner.clean_file(collected_data, True)
+    search = "(ECUADOR OR TRI OR FEF) AND (FUTBOL OR FÚTBOL OR partido OR selección OR seleccion OR copa OR mundial)"
+    query = Query(search, date_start="2021-09-06", limit_tweets=100)
+    collected_data = collector.collect(query, True)
+    cleaned_data = cleaner.clean(collected_data, True)
     translate_data = traductor.traduce(cleaned_data, True)
     if translate_data is not None:
         analized_data = analizer.analize(translate_data["traduced"])
