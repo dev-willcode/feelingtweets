@@ -1,4 +1,4 @@
-from collector.scrapper import Scrapper
+from .scrapper import Scrapper
 from pandas.core.frame import DataFrame
 from feelingtweets.utils.query import Query
 from feelingtweets.utils.writter import FileWritter
