@@ -1,18 +1,10 @@
-import os
-import io
 from distutils.core import setup
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-with io.open(os.path.join(here, "README.md"), encoding="utf-8") as f:
-    long_description = "\n" + f.read()
 
 setup(
     name="feelingtweets",
     packages=["feelingtweets"],
     version="0.0.2",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
     license="MIT",
     description="A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)",
     author="Willy Carreño",
