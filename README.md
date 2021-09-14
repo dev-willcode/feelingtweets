@@ -19,6 +19,13 @@ A library to collect tweets, clean it (pre-processing), translate it, and create
 pip install feelingtweets
 ```
 
+Unfortunately, this library requires some experimental versions of two libraries, You should install these to avoid problems:
+
+```bash
+pip install googletrans==4.0.0-rc1
+pip3 install --upgrade git+https://github.com/twintproject/twint.git#egg=twint
+```
+
 ## 👷‍♀️ Usage
 
 Pass an image (_array buffer_) to the input of node, and receive:
