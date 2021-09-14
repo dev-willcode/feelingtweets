@@ -1,5 +1,5 @@
 from pandas.core.frame import DataFrame
-from utils.config import Config
+from feelingtweets.utils.config import Config
 from os import path
 import os
 

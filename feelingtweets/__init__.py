@@ -1,4 +1,3 @@
-
 from utils.query import Query
 from utils.config import Config
 from collector.tweetCollector import TweetCollector

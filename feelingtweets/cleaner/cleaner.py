@@ -1,6 +1,6 @@
 from pandas.core.frame import DataFrame
-from utils.config import Config
-from utils.writter import FileWritter
+from feelingtweets.utils.config import Config
+from feelingtweets.utils.writter import FileWritter
 import re as regex
 import pandas as pd
 

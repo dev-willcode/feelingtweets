@@ -1,8 +1,8 @@
 from scrapper.scrapper import Scrapper
 from pandas.core.frame import DataFrame
-from utils.query import Query
-from utils.writter import FileWritter
-from utils.config import Config
+from feelingtweets.utils.query import Query
+from feelingtweets.utils.writter import FileWritter
+from feelingtweets.utils.config import Config
 
 
 class TweetCollector:

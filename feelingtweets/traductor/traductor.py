@@ -1,6 +1,6 @@
-from utils.writter import FileWritter
+from feelingtweets.utils.writter import FileWritter
 from pandas.core.frame import DataFrame
-from utils.config import Config
+from feelingtweets.utils.config import Config
 from googletrans import Translator
 import pandas as pd
 

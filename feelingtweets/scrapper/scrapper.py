@@ -1,6 +1,6 @@
 from pandas.core.frame import DataFrame
-from utils.query import Query
-from utils.config import Config
+from feelingtweets.utils.query import Query
+from feelingtweets.utils.config import Config
 from twint import run, Config, storage
 
 
