@@ -12,7 +12,7 @@ class CollectorConfig:
     output_traduce_language: str
 
     def __init__(self,
-                 output_folder="C:\\Users\\willy\\Documents\\Analisys",
+                 output_folder="C:\\Users\\willy\\Documents\\tweetfeels",
                  output_folder_collected="collected",
                  output_folder_cleaned="cleaned",
                  output_folder_analized="analized",
