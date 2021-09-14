@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
     name='feelingtweets',
     packages=['feelingtweets'],
-    version='1.0',
+    version='0.0.1',
     license='MIT',
     description='A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)',
     author='Willy Carreño',
     author_email='dev.willct@gmail.com',
     url='https://github.com/dev-willcode/sentimental-analysis-project',
-    download_url='https://github.com/dev-willcode/sentimental-analysis-project/archive/v_01.tar.gz',
+    download_url='https://github.com/dev-willcode/sentimental-analysis-project/archive/refs/tags/v0.0.1.tar.gz',
     keywords=['Sentimental', "Analysis", 'Textblob', 'VADER', "PNL"],
     install_requires=[
         'googletrans',
