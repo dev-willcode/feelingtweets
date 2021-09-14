@@ -1,9 +1,8 @@
 from distutils.core import setup
-
+import setuptools
 
 setup(
     name="feelingtweets",
-    packages=["feelingtweets"],
     version="0.0.2",
     license="MIT",
     description="A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)",
@@ -13,6 +12,7 @@ setup(
     download_url="https://github.com/dev-willcode/feelingtweets/archive/refs/tags/v0.0.2.tar.gz",
     keywords=["Sentimental", "Analysis", "Textblob", "VADER", "PNL"],
     python_requires=">=3.6.0",
+    packages=setuptools.find_packages(),
     install_requires=[
         "pandas",
         "vaderSentiment",
