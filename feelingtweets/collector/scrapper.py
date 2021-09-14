@@ -2,6 +2,7 @@ from pandas.core.frame import DataFrame
 from feelingtweets.utils.query import Query
 from feelingtweets.utils.config import Config
 from twint import run, Config, storage
+import nest_asyncio
 
 
 class Scrapper:
@@ -23,6 +24,8 @@ class Scrapper:
             params.Since = query.date_start
             params.Until = query.date_end
             params.TwitterSearch = True
+            # conda support or py 3.9+
+            nest_asyncio.apply()
             run.Search(params)
             result: DataFrame = storage.panda.Tweets_df
             if result.empty:

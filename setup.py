@@ -18,9 +18,8 @@ setup(
         "vaderSentiment",
         "textblob",
         "googletrans==4.0.0rc1",
-    ],
-    dependency_links=[
-        "git+https://github.com/twintproject/twint.git#egg=twint"
+        "nest_asyncio",
+        "repo @ https://github.com/twintproject/twint.git#egg=twint"
     ],
     classifiers=["Development Status :: 3 - Alpha",
                  "Intended Audience :: Education",
