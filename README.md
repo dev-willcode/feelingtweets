@@ -19,24 +19,14 @@ A library to collect tweets, clean it (pre-processing), translate it, and create
 pip install feelingtweets
 ```
 
-Unfortunately, this library requires some experimental versions of two libraries, You should install these to avoid problems:
+Unfortunately, this library requires some experimental versions of twint, you should install with this cmd:
 
 ```bash
-pip install googletrans==4.0.0-rc1
 pip3 install --upgrade git+https://github.com/twintproject/twint.git#egg=twint
 ```
 
 ## 👷‍♀️ Usage
 
-Pass an image (_array buffer_) to the input of node, and receive:
-
-- The prediction model, that includes: bbox array, prediction array, and label array (_0 = mask object_)
-- Original image processed.
-- Boolean value (_detected_) any mask on the picture.
-- Quantity of mask detected
-- threshold configurated to evaluate that picture.
-
-You can configure the threshold value to detect with more or less precision.
 
 ```py
     import feelingtweets as ft
