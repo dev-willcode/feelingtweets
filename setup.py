@@ -19,7 +19,7 @@ setup(
         "textblob",
         "googletrans==4.0.0rc1",
         "nest_asyncio",
-        "twint @ git+ssh://git@github.com/twintproject/twint.git"
+        "https://github.com/twintproject/twint/archive/refs/tags/v2.1.21.tar.gz"
     ],
     classifiers=["Development Status :: 3 - Alpha",
                  "Intended Audience :: Education",
