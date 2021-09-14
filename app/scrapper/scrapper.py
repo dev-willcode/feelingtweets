@@ -1,6 +1,6 @@
 from pandas.core.frame import DataFrame
 from utils.query import Query
-from collector.collectorConfig import CollectorConfig
+from utils.config import CollectorConfig
 from twint import run, Config, storage
 
 

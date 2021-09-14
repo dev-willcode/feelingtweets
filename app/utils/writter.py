@@ -1,5 +1,5 @@
 from pandas.core.frame import DataFrame
-from collector.collectorConfig import CollectorConfig
+from utils.config import CollectorConfig
 from os import path
 import os
 

@@ -1,6 +1,6 @@
 from utils.writter import FileWritter
 from pandas.core.frame import DataFrame
-from collector.collectorConfig import CollectorConfig
+from utils.config import CollectorConfig
 from googletrans import Translator
 import pandas as pd
 

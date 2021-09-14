@@ -2,7 +2,7 @@ from scrapper.scrapper import Scrapper
 from pandas.core.frame import DataFrame
 from utils.query import Query
 from utils.writter import FileWritter
-from collector.collectorConfig import CollectorConfig
+from utils.config import CollectorConfig
 
 
 class TweetCollector:

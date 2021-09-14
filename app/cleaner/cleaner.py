@@ -1,5 +1,5 @@
 from pandas.core.frame import DataFrame
-from collector.collectorConfig import CollectorConfig
+from utils.config import CollectorConfig
 from utils.writter import FileWritter
 import re as regex
 import pandas as pd
