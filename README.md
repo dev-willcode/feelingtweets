@@ -4,7 +4,7 @@
 
 </section>
 <h1 align="center">
-  Feelingtweets - Sentiment Analysis on Twitter 📊📳
+  Feelingtweets - Sentiments Analysis on Twitter 📊📳
 </h1>
 
 A library to collect tweets, clean it (pre-processing), translate it, and create analytics with Textblob and VADER methods.

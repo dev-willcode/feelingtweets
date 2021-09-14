@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='feelingtweets',
     packages=['feelingtweets'],
-    version='0.1',
+    version='1.0',
     license='MIT',
     description='A dsitributed modules to collect/clean/translate and analize with Rule-based methods (Texblob and VADER)',
     author='Willy Carreño',
